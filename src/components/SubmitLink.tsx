@@ -1,9 +1,10 @@
 import React, { useState, useCallback } from "react";
+import { RouteComponentProps } from 'react-router-dom'
 import { useMutation } from "urql";
 import { POST_MUTATION } from "../utils/queries";
 import { SUBMIT } from "../utils/constants";
 
-const SubmitLink = ({ history }) => {
+const SubmitLink = ({ history }: RouteComponentProps) => {
   const [description, setDescription] = useState("");
   const [url, setUrl] = useState("");
 

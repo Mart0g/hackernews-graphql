@@ -1,6 +1,11 @@
-import React from "react";
+import React from 'react'
+import { LinkType } from '../utils/types'
 
-const Link = ({ link }) => {
+type LinkProps = {
+  link: LinkType
+}
+
+const Link = ({ link }: LinkProps) => {
   const { description, url } = link;
 
   return (

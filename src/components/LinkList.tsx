@@ -3,6 +3,7 @@ import Link from "./Link";
 import { useQuery } from "urql";
 import { FEED_QUERY } from "../utils/queries";
 import { FETCHING, ERROR } from "../utils/constants";
+import { LinkType } from '../utils/types'
 
 const LinkList = () => {
   const [result] = useQuery({ query: FEED_QUERY });
@@ -15,7 +16,7 @@ const LinkList = () => {
 
   return (
     <div>
-      {linksToRender.map((link) => (
+      {linksToRender.map((link: LinkType) => (
         <Link key={link.id} link={link} />
       ))}
     </div>

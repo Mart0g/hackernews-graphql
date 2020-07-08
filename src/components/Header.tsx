@@ -1,10 +1,10 @@
 import React from "react";
 import { withRouter } from "react-router";
-import { Link } from "react-router-dom";
+import { Link, RouteComponentProps } from "react-router-dom";
 import { LOGIN, LOGOUT, TITLE, SUBMIT, NEW } from "../utils/constants";
 import { getToken, deleteToken } from "../utils/token";
 
-const Header = ({ history }) => {
+const Header = ({ history }: RouteComponentProps) => {
   const isLoggedIn = !!getToken();
 
   return (

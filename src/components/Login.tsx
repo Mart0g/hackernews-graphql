@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from "react";
+import { RouteComponentProps } from 'react-router-dom'
 import { useMutation } from "urql";
 import { LOGIN_MUTATION, SIGNUP_MUTATION } from "../utils/queries";
 import {
@@ -12,7 +13,7 @@ import {
 } from "../utils/constants";
 import { setToken } from "../utils/token";
 
-const Login = ({ history }) => {
+const Login = ({ history }: RouteComponentProps) => {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   const [email, setEmail] = useState("");

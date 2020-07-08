@@ -1,0 +1,12 @@
+export const TITLE: string = "Hacker News";
+export const SUBMIT: string = "Submit";
+export const NEW: string = "new";
+export const FETCHING: string = "Fetching...";
+export const ERROR: string = "Error!";
+export const LOGIN: string = "Login";
+export const LOGOUT: string = "logout";
+export const SIGN_UP: string = "Sign Up";
+export const CREATE_ACCOUNT: string = "create account";
+export const NEW_ACCOUNT: string = "need to create an account?";
+export const EXISTING_ACCOUNT: string = "already have an account?";
+export const USER_NOT_FOUND: string = "No such user found!";
