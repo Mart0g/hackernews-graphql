@@ -1,16 +1,19 @@
 import React, { useState, useCallback } from "react";
 import { useMutation } from "urql";
 import { POST_MUTATION } from "../utils/queries";
+import { SUBMIT } from "../utils/constants";
 
-const CreateLink = () => {
+const SubmitLink = ({ history }) => {
   const [description, setDescription] = useState("");
   const [url, setUrl] = useState("");
 
   const [{ fetching }, executeMutation] = useMutation(POST_MUTATION);
 
   const onClick = useCallback(() => {
-    executeMutation({ url, description });
-  }, [executeMutation, url, description]);
+    executeMutation({ url, description }).then(() => {
+      history.push("/");
+    });
+  }, [executeMutation, url, description, history]);
 
   return (
     <div>
@@ -31,10 +34,10 @@ const CreateLink = () => {
         />
       </div>
       <button disabled={fetching} onClick={onClick}>
-        Submit
+        {SUBMIT}
       </button>
     </div>
   );
 };
 
-export default CreateLink;
+export default SubmitLink;
