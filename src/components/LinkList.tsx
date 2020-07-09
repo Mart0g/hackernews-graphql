@@ -16,8 +16,8 @@ const LinkList = () => {
 
   return (
     <div>
-      {linksToRender.map((link: LinkType) => (
-        <Link key={link.id} link={link} />
+      {linksToRender.map((link: LinkType, index: number) => (
+        <Link key={link.id} link={link} index={index} />
       ))}
     </div>
   );

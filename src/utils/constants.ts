@@ -10,3 +10,6 @@ export const CREATE_ACCOUNT: string = "create account";
 export const NEW_ACCOUNT: string = "need to create an account?";
 export const EXISTING_ACCOUNT: string = "already have an account?";
 export const USER_NOT_FOUND: string = "No such user found!";
+export const VOTES_BY: string = "votes | by";
+export const UNKNOWN: string = "Unknown";
+export const SEARCH: string = "Search";

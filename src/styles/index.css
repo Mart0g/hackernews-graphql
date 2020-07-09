@@ -24,6 +24,10 @@ input {
   font-size: 11px;
 }
 
+.f11:hover {
+  cursor: pointer;
+}
+
 .w85 {
   width: 85%;
 }

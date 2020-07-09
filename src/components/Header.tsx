@@ -1,7 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router";
 import { Link, RouteComponentProps } from "react-router-dom";
-import { LOGIN, LOGOUT, TITLE, SUBMIT, NEW } from "../utils/constants";
+import { LOGIN, LOGOUT, TITLE, SUBMIT, NEW, SEARCH } from "../utils/constants";
 import { getToken, deleteToken } from "../utils/token";
 
 const Header = ({ history }: RouteComponentProps) => {
@@ -13,6 +13,10 @@ const Header = ({ history }: RouteComponentProps) => {
         <div className="fw7 mr1">{TITLE}</div>
         <Link to="/" className="ml1 no-underline black">
           {NEW}
+        </Link>
+        <div className="ml1">|</div>
+        <Link to="/search" className="ml1 no-underline black">
+          {SEARCH.toLowerCase()}
         </Link>
         {isLoggedIn && (
           <div className="flex">
