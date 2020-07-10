@@ -2,7 +2,7 @@ import React, { useState, useCallback } from "react";
 import { RouteComponentProps } from 'react-router-dom'
 import { useMutation } from "urql";
 import { POST_MUTATION } from "../utils/queries";
-import { SUBMIT } from "../utils/constants";
+import { SUBMIT, NEW } from "../utils/constants";
 
 const SubmitLink = ({ history }: RouteComponentProps) => {
   const [description, setDescription] = useState("");
@@ -18,7 +18,8 @@ const SubmitLink = ({ history }: RouteComponentProps) => {
 
   return (
     <div>
-      <div className="flex flex-column mt3">
+      <h4 className="mv3">{NEW}</h4>
+      <div className="flex flex-column">
         <input
           className="mb2"
           value={description}
@@ -34,9 +35,16 @@ const SubmitLink = ({ history }: RouteComponentProps) => {
           placeholder="The URL for the link"
         />
       </div>
-      <button disabled={fetching} onClick={onClick}>
-        {SUBMIT}
-      </button>
+      <div className="flex mt3">
+        <button
+          type="button"
+          className="pointer mr2 button"
+          disabled={fetching}
+          onClick={onClick}
+        >
+          {SUBMIT.toLowerCase()}
+        </button>
+      </div>
     </div>
   );
 };

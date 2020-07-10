@@ -18,3 +18,11 @@ export type LinkType = {
   postedBy: PostedByType;
   votes: Array<VoteType>;
 };
+
+export type LinkListType = {
+  history: any;
+  location: any;
+  match: {
+    params: any;
+  };
+};

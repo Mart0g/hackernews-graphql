@@ -23,17 +23,28 @@ const Search = () => {
 
   return (
     <div>
-      <div>
+      <h4 className="mv3">{SEARCH}</h4>
+
+      <div className="flex flex-column">
         <input
           type='text'
           onChange={({ target }) => setFilter(target.value)}
         />
-        {' '}
-        <button onClick={onClick}>{SEARCH}</button>
       </div>
-      {links.map((link, index) => (
-        <Link key={link.id} link={link} index={index} />
-      ))}
+      <div className="flex mt3">
+        <button
+          type="button"
+          className="pointer mr2 button"
+          onClick={onClick}
+        >
+          {SEARCH.toLowerCase()}
+        </button>
+      </div>
+      <div className="mt3">
+        {links.map((link, index) => (
+          <Link key={link.id} link={link} index={index} />
+        ))}
+      </div>
     </div>
   )
 }

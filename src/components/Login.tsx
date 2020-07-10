@@ -48,6 +48,7 @@ const Login = ({ history }: RouteComponentProps) => {
       <div className="flex flex-column">
         {!isLoggedIn && (
           <input
+            className="mb2"
             value={name}
             onChange={({ target }) => setName(target.value)}
             type="text"
@@ -55,12 +56,14 @@ const Login = ({ history }: RouteComponentProps) => {
           />
         )}
         <input
+          className="mb2"
           value={email}
           onChange={({ target }) => setEmail(target.value)}
           type="text"
           placeholder="Your email address"
         />
         <input
+          className="mb2"
           value={password}
           onChange={({ target }) => setPassword(target.value)}
           type="password"

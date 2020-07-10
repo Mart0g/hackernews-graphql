@@ -1,6 +1,7 @@
 export const TITLE: string = "Hacker News";
 export const SUBMIT: string = "Submit";
-export const NEW: string = "new";
+export const NEW: string = "New";
+export const TOP: string = "top";
 export const FETCHING: string = "Fetching...";
 export const ERROR: string = "Error!";
 export const LOGIN: string = "Login";
@@ -13,3 +14,5 @@ export const USER_NOT_FOUND: string = "No such user found!";
 export const VOTES_BY: string = "votes | by";
 export const UNKNOWN: string = "Unknown";
 export const SEARCH: string = "Search";
+export const NEXT: string = "Next";
+export const PREVIOUS: string = "Previous";

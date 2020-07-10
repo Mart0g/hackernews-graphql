@@ -24,7 +24,8 @@ input {
   font-size: 11px;
 }
 
-.f11:hover {
+.f11:hover,
+.fw7:hover {
   cursor: pointer;
 }
 

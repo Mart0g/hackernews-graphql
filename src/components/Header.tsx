@@ -1,7 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router";
 import { Link, RouteComponentProps } from "react-router-dom";
-import { LOGIN, LOGOUT, TITLE, SUBMIT, NEW, SEARCH } from "../utils/constants";
+import { LOGIN, LOGOUT, TITLE, SUBMIT, NEW, SEARCH, TOP } from "../utils/constants";
 import { getToken, deleteToken } from "../utils/token";
 
 const Header = ({ history }: RouteComponentProps) => {
@@ -10,9 +10,18 @@ const Header = ({ history }: RouteComponentProps) => {
   return (
     <div className="flex pa1 justify-between nowrap orange">
       <div className="flex flex-fixed black">
-        <div className="fw7 mr1">{TITLE}</div>
+        <div
+          className="fw7 mr1"
+          onClick={() => { history.push("/"); }}
+        >
+          {TITLE}
+        </div>
         <Link to="/" className="ml1 no-underline black">
-          {NEW}
+          {NEW.toLowerCase()}
+        </Link>
+        <div className="ml1">|</div>
+        <Link to="/top" className="ml1 no-underline black">
+          {TOP}
         </Link>
         <div className="ml1">|</div>
         <Link to="/search" className="ml1 no-underline black">
