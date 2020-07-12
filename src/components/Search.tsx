@@ -1,9 +1,9 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState, useCallback } from "react";
 import { useQuery } from "urql";
-import { FEED_SEARCH_QUERY } from "../utils/queries";
-import { SEARCH } from '../utils/constants'
-import { LinkType } from '../utils/types'
-import Link from './Link'
+import Link from "./Link";
+import { FEED_SEARCH_QUERY } from "../graphql/queries";
+import { SEARCH } from "../utils/constants";
+import { LinkType } from "../utils/types";
 
 const Search = () => {
   const [filter, setFilter] = useState('')

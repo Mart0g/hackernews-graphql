@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from "react";
-import { RouteComponentProps } from 'react-router-dom'
+import { RouteComponentProps } from "react-router-dom";
 import { useMutation } from "urql";
-import { POST_MUTATION } from "../utils/queries";
+import { POST_MUTATION } from "../graphql/mutations";
 import { SUBMIT, NEW } from "../utils/constants";
 
 const SubmitLink = ({ history }: RouteComponentProps) => {

@@ -1,10 +1,10 @@
-import React, { useCallback } from 'react'
-import { useMutation } from 'urql'
-import { VOTE_MUTATION } from '../utils/queries'
-import { getToken } from '../utils/token'
-import { timeDifferenceForDate } from '../utils/dates'
-import { LinkType } from '../utils/types'
-import { VOTES_BY, UNKNOWN } from '../utils/constants'
+import React, { useCallback } from "react";
+import { useMutation } from "urql";
+import { VOTE_MUTATION } from "../graphql/mutations";
+import { getToken } from "../utils/token";
+import { timeDifferenceForDate } from "../utils/dates";
+import { LinkType } from "../utils/types";
+import { VOTES_BY, UNKNOWN } from "../utils/constants";
 
 type LinkProps = {
   index: number

@@ -4,7 +4,7 @@ import Header from "./Header";
 import LinkList from "./LinkList";
 import Login from "./Login";
 import SubmitLink from "./SubmitLink";
-import Search from './Search'
+import Search from "./Search";
 
 const App = () => (
   <div className="center w85">

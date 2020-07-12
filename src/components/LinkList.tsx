@@ -1,9 +1,10 @@
 import React, { useCallback, useMemo } from "react";
+import { useQuery, useSubscription } from "urql";
 import Link from "./Link";
-import { useQuery } from "urql";
-import { FEED_QUERY } from "../utils/queries";
+import { FEED_QUERY } from "../graphql/queries";
+import { NEW_VOTES_SUBSCRIPTION, NEW_LINKS_SUBSCRIPTION } from "../graphql/subscriptions";
 import { FETCHING, ERROR, NEXT, PREVIOUS } from "../utils/constants";
-import { LinkType, LinkListType } from '../utils/types'
+import { LinkType, LinkListType } from "../utils/types";
 
 const LinkList = ({ history, location, match }: LinkListType) => {
   const isNewPage = location.pathname.includes('new')
@@ -17,6 +18,9 @@ const LinkList = ({ history, location, match }: LinkListType) => {
 
   const [result] = useQuery({ query: FEED_QUERY, variables })
   const { data, fetching, error } = result;
+
+  useSubscription({ query: NEW_VOTES_SUBSCRIPTION })
+  useSubscription({ query: NEW_LINKS_SUBSCRIPTION })
 
   const linksToRender: Array<LinkType> = useMemo(() => {
     if (!data || !data.feed) {

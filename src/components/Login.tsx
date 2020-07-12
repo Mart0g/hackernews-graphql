@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from "react";
-import { RouteComponentProps } from 'react-router-dom'
+import { RouteComponentProps } from "react-router-dom";
 import { useMutation } from "urql";
-import { LOGIN_MUTATION, SIGNUP_MUTATION } from "../utils/queries";
+import { LOGIN_MUTATION, SIGNUP_MUTATION } from "../graphql/mutations";
 import {
   LOGIN,
   SIGN_UP,

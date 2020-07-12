@@ -1,30 +1,36 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./styles/index.css";
+import { BrowserRouter } from "react-router-dom";
+import {
+  Provider,
+  Client,
+  dedupExchange,
+  fetchExchange,
+  subscriptionExchange,
+} from "urql";
+import { cacheExchange } from "@urql/exchange-graphcache";
+import { SubscriptionClient } from "subscriptions-transport-ws";
 import App from "./components/App";
 import * as serviceWorker from "./serviceWorker";
-import { Provider, Client, dedupExchange, fetchExchange } from "urql";
-import { BrowserRouter } from "react-router-dom";
-import { cacheExchange } from "@urql/exchange-graphcache";
 import { getToken } from "./utils/token";
-import { FEED_QUERY } from "./utils/queries";
+import { updateCache } from "./utils/cache";
+import "./styles/index.css";
 
 const cache = cacheExchange({
   updates: {
     Mutation: {
-      post: ({ post }, _args, cache) => {
-        const variables = { first: 10, skip: 0, orderBy: "createdAt_DESC" };
-        cache.updateQuery({ query: FEED_QUERY, variables }, (data) => {
-          if (data !== null) {
-            data.feed.links.unshift(post);
-            data.feed.count++;
-            return data;
-          } else {
-            return null;
-          }
-        });
-      },
+      post: ({ post }, _args, cache) => updateCache(cache, post),
     },
+    Subscription: {
+      newLink: ({ newLink }, _args, cache) => updateCache(cache, newLink),
+    },
+  },
+});
+
+const subscriptionClient = new SubscriptionClient("ws://localhost:4000", {
+  reconnect: true,
+  connectionParams: {
+    authToken: getToken(),
   },
 });
 
@@ -36,7 +42,14 @@ const client = new Client({
       headers: { authorization: token ? `Bearer ${token}` : "" },
     };
   },
-  exchanges: [dedupExchange, cache, fetchExchange],
+  exchanges: [
+    dedupExchange,
+    cache,
+    fetchExchange,
+    subscriptionExchange({
+      forwardSubscription: (operation) => subscriptionClient.request(operation),
+    }),
+  ],
 });
 
 ReactDOM.render(
@@ -48,7 +61,4 @@ ReactDOM.render(
   document.getElementById("root")
 );
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
